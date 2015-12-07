@@ -1,9 +1,6 @@
-﻿using ch.hsr.wpf.gadgeothek.domain;
-using ch.hsr.wpf.gadgeothek.service;
-using gadgeothek.UI.ViewModel;
+﻿using gadgeothek.UI.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,16 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace gadgeothek.UI
+namespace gadgeothek.UI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoansOverview.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoansOverview : UserControl
     {
-        public MainWindow()
+        public LoansOverview()
         {
             InitializeComponent();
+            DataContext = new LoanViewModel();
         }
     }
 }

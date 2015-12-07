@@ -63,6 +63,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\GadgetViewModel.cs" />
+    <Compile Include="ViewModel\LoanViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Views\AddGadgetFormular.xaml.cs">
+      <DependentUpon>AddGadgetFormular.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeletionDialogGadget.xaml.cs">
+      <DependentUpon>DeletionDialogGadget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GadgetOverview.xaml.cs">
+      <DependentUpon>GadgetOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoansOverview.xaml.cs">
+      <DependentUpon>LoansOverview.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +90,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AddGadgetFormular.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeletionDialogGadget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GadgetOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoansOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -114,6 +145,7 @@
       <Name>ch.hsr.wpf.gadgeothek</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

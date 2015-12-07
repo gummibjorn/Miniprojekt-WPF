@@ -4,9 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gadgeothek.UI"
+        xmlns:Views="clr-namespace:gadgeothek.UI.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid CanUserAddRows="False" Name="gadgetGrid"/>
+        <TabControl>
+            <TabItem Header="Gadgets">
+                <Views:GadgetOverview x:Name="gadgetOverview" />
+            </TabItem>
+            <TabItem Header="Loans">
+                <Views:LoansOverview x:Name="loansOverview" />
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

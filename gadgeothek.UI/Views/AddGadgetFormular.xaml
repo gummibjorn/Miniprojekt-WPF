@@ -1,0 +1,28 @@
+﻿<Window x:Class="gadgeothek.UI.Views.AddGadgetFormular"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gadgeothek.UI.Views"
+        mc:Ignorable="d"
+        Title="AddGadgetFormular" Height="300" Width="300">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label>Name</Label>
+                <TextBox Name="gadgetName" Width="400"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Price</Label>
+                <TextBox Name="gadgetPrice" Width="400"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Manufacturer</Label>
+                <TextBox Name="gadgetManufacturer" Width="400"/>
+            </StackPanel>
+            <Button Click="saveButton_Click">
+                <TextBlock Text="Save"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
