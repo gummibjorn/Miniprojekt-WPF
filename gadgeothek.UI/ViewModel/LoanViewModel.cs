@@ -7,6 +7,7 @@ using System.Timers;
 using ch.hsr.wpf.gadgeothek.domain;
 using System.Collections.ObjectModel;
 using System.Threading;
+using System.Windows.Threading;
 
 namespace gadgeothek.UI.ViewModel
 {
@@ -15,25 +16,16 @@ namespace gadgeothek.UI.ViewModel
 
         public LoanViewModel()
         {
-            Run(refreshLoanList, new TimeSpan(0,0,3));
             Loans = new ObservableCollection<Loan>(Service.GetAllLoans());
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(3);
+            timer.Tick += refreshLoanList;
+            timer.Start();
         }
 
         public ObservableCollection<Loan> Loans { get; private set; }
-        public async Task Run(Action action, TimeSpan period, CancellationToken cancellationToken)
-        {
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                await Task.Delay(period, cancellationToken);
-                action();
-            }
-        }
-        private Task Run(Action refreshLoanList, TimeSpan period)
-        {
-            return Run(refreshLoanList, period, CancellationToken.None);
-        }
 
-        private void refreshLoanList()
+        private void refreshLoanList(object sender, EventArgs e)
         {
             Loans.Clear();
             Service.GetAllLoans().ForEach(l => Loans.Add(l));

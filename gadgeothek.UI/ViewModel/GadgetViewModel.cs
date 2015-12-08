@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Timers;
 using System.Windows.Data;
 using System.Threading;
+using System.Windows.Threading;
 
 namespace gadgeothek.UI.ViewModel
 {
@@ -17,10 +18,12 @@ namespace gadgeothek.UI.ViewModel
 
         public GadgetViewModel()
         {
-            Run(refreshGadgetList, new TimeSpan(0,0,3));
             Gadgets = new ObservableCollection<Gadget>(Service.GetAllGadgets());
+            var timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += refreshGadgetList;
+            timer.Start();
         }
-
 
 
         public void addGadget(String name, Double price, String Manufacturer)
@@ -31,25 +34,13 @@ namespace gadgeothek.UI.ViewModel
             Service.AddGadget(gadget);
         }
 
-        public async Task Run(Action action, TimeSpan period, CancellationToken cancellationToken)
-        {
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                await Task.Delay(period, cancellationToken);
-                action();
-            }
-        }
-
         internal void DeleteGadget(Gadget toDelete)
         {
+            Gadgets.Remove(toDelete);
             Service.DeleteGadget(toDelete);
         }
 
-        private Task Run(Action refreshGadgetList, TimeSpan period)
-        {
-            return Run(refreshGadgetList, period, CancellationToken.None);
-        }
-        private void refreshGadgetList()
+        private void refreshGadgetList(object sender, EventArgs e)
         {
             Gadgets.Clear();
             Service.GetAllGadgets().ForEach(g=>Gadgets.Add(g));

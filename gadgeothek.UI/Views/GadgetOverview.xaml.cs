@@ -40,10 +40,11 @@ namespace gadgeothek.UI.Views
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             Gadget toDelete = (Gadget)gadgetGrid.SelectedItem;
-            DeletionDialogGadget deletiondialog = new DeletionDialogGadget();
-            deletiondialog.GadgetViewModel = gadgetViewModel;
-            deletiondialog.ToDelete = toDelete;
-            deletiondialog.Show();
+            var messageBox = MessageBox.Show("Are you sure to delete " + toDelete.Name + "?", "Delete confirmation", MessageBoxButton.YesNo);
+            if (MessageBoxResult.Yes==messageBox)
+            {
+                gadgetViewModel.DeleteGadget(toDelete);
+            }
         }
     }
 }
