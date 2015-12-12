@@ -25,11 +25,13 @@ namespace gadgeothek.UI.Views
         private GadgetViewModel gadgetViewModel;
         private AddGadgetModel addGadgetModel;
 
-        internal AddGadgetFormular(GadgetViewModel gadgetViewModell)
+        internal AddGadgetFormular(GadgetViewModel gadgetViewModel)
         {
-            gadgetViewModel = gadgetViewModell;
+            this.gadgetViewModel = gadgetViewModel;
+            this.addGadgetModel = new AddGadgetModel();
+
             InitializeComponent();
-            addGadgetModel = new AddGadgetModel();
+
             DataContext = addGadgetModel;
         }
 

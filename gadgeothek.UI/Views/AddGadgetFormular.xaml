@@ -20,6 +20,10 @@
                 <Label>Manufacturer</Label>
                 <TextBox Width="400" Text="{Binding Path=Gadget.Manufacturer, Mode=TwoWay}" />
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Condition</Label>
+                <ComboBox Name="ComboBoxCondition" SelectedValue="{Binding Path=Gadget.Condition}" ItemsSource="{Binding Path=ConditionValues}" />
+            </StackPanel>
             <Button Click="saveButton_Click">
                 <TextBlock Text="Save"/>
             </Button>

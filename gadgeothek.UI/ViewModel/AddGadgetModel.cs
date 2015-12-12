@@ -19,6 +19,14 @@ namespace gadgeothek.UI.ViewModel
             Gadget = new Gadget("");
         }
 
+        public IEnumerable<Condition> ConditionValues
+        {
+            get
+            {
+                return Enum.GetValues(typeof(Condition)).Cast<Condition>();
+            }
+        }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged != null)
