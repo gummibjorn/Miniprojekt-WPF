@@ -36,6 +36,7 @@ namespace gadgeothek.UI.ViewModel
 
         public void addGadget(Gadget gadget)
         {
+            Gadgets.Add(gadget);
             Service.AddGadget(gadget);
         }
 
