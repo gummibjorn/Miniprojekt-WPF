@@ -10,15 +10,15 @@
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label>Name</Label>
-                <TextBox Name="gadgetName" Width="400"/>
+                <TextBox Width="400" Text="{Binding Path=Gadget.Name, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label>Price</Label>
-                <TextBox Name="gadgetPrice" Width="400"/>
+                <TextBox Width="400" Text="{Binding Path=Gadget.Price, Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label>Manufacturer</Label>
-                <TextBox Name="gadgetManufacturer" Width="400"/>
+                <TextBox Width="400" Text="{Binding Path=Gadget.Manufacturer, Mode=TwoWay}" />
             </StackPanel>
             <Button Click="saveButton_Click">
                 <TextBlock Text="Save"/>

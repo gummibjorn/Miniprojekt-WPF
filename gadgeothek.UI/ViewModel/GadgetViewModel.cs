@@ -14,20 +14,24 @@ namespace gadgeothek.UI.ViewModel
 {
     class GadgetViewModel : ViewModelBase
     {
+        public ObservableCollection<Gadget> Gadgets { get; private set; }
 
         public GadgetViewModel()
         {
-            Run(refreshGadgetList, new TimeSpan(0,0,3));
+            Run(refreshGadgetList, new TimeSpan(0, 0, 3));
             Gadgets = new ObservableCollection<Gadget>(Service.GetAllGadgets());
         }
-
-
 
         public void addGadget(String name, Double price, String Manufacturer)
         {
             Gadget gadget = new Gadget(name);
             gadget.Price = price;
             gadget.Manufacturer = Manufacturer;
+            Service.AddGadget(gadget);
+        }
+
+        public void addGadget(Gadget gadget)
+        {
             Service.AddGadget(gadget);
         }
 
@@ -49,11 +53,12 @@ namespace gadgeothek.UI.ViewModel
         {
             return Run(refreshGadgetList, period, CancellationToken.None);
         }
+
         private void refreshGadgetList()
         {
             Gadgets.Clear();
-            Service.GetAllGadgets().ForEach(g=>Gadgets.Add(g));
+            Service.GetAllGadgets().ForEach(g => Gadgets.Add(g));
         }
-        public ObservableCollection<Gadget> Gadgets { get; private set; }
     }
 }
+

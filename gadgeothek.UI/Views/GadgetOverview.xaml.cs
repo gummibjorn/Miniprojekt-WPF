@@ -33,8 +33,7 @@ namespace gadgeothek.UI.Views
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            AddGadgetFormular addForm = new AddGadgetFormular();
-            addForm.GadgetViewModel = gadgetViewModel;
+            AddGadgetFormular addForm = new AddGadgetFormular(gadgetViewModel);
             addForm.Show();
         }
         private void deleteButton_Click(object sender, RoutedEventArgs e)

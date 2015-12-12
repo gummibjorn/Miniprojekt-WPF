@@ -2,6 +2,7 @@
 using gadgeothek.UI.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,28 +23,19 @@ namespace gadgeothek.UI.Views
     public partial class AddGadgetFormular : Window
     {
         private GadgetViewModel gadgetViewModel;
+        private AddGadgetModel addGadgetModel;
 
-        public AddGadgetFormular()
+        internal AddGadgetFormular(GadgetViewModel gadgetViewModell)
         {
+            gadgetViewModel = gadgetViewModell;
             InitializeComponent();
-            DataContext = gadgetViewModel;
-        }
-        internal GadgetViewModel GadgetViewModel
-        {
-            get
-            {
-                return gadgetViewModel;
-            }
-
-            set
-            {
-                gadgetViewModel = value;
-            }
+            addGadgetModel = new AddGadgetModel();
+            DataContext = addGadgetModel;
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            gadgetViewModel.addGadget(gadgetName.Text, Convert.ToDouble(gadgetPrice.Text), gadgetManufacturer.Text);
+            gadgetViewModel.addGadget(addGadgetModel.Gadget);
             this.Close();
         }
     }
