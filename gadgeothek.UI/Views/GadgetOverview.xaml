@@ -6,17 +6,19 @@
              xmlns:local="clr-namespace:gadgeothek.UI.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <StackPanel Orientation="Vertical">
-            <DataGrid CanUserAddRows="False" Name="gadgetGrid" ItemsSource="{Binding Gadgets}"/>
-            <StackPanel Orientation="Horizontal">
-                <Button Click="addButton_Click">
-                    <TextBlock Text="Add Gadget" />
-                </Button>
-                <Button Click="deleteButton_Click">
-                    <TextBlock Text="Delete Gadget" />
-                </Button>
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <DataGrid CanUserAddRows="False" Name="gadgetGrid" ItemsSource="{Binding Gadgets}" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="addButton_Click">
+                        <TextBlock Text="Add Gadget" />
+                    </Button>
+                    <Button Click="deleteButton_Click">
+                        <TextBlock Text="Delete Gadget" />
+                    </Button>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
