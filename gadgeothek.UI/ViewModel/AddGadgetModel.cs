@@ -12,7 +12,7 @@ namespace gadgeothek.UI.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Gadget Gadget { get; set; }
+        public Gadget Gadget { get; private set; }
 
         public AddGadgetModel()
         {

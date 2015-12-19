@@ -22,12 +22,12 @@ namespace gadgeothek.UI.Views
     /// </summary>
     public partial class AddGadgetFormular : Window
     {
-        private GadgetViewModel gadgetViewModel;
         private AddGadgetModel addGadgetModel;
+        private Action<Gadget> addGadget;
 
-        internal AddGadgetFormular(GadgetViewModel gadgetViewModel)
+        internal AddGadgetFormular(Action<Gadget> addGadget)
         {
-            this.gadgetViewModel = gadgetViewModel;
+            this.addGadget = addGadget;
             this.addGadgetModel = new AddGadgetModel();
 
             InitializeComponent();
@@ -37,7 +37,8 @@ namespace gadgeothek.UI.Views
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            gadgetViewModel.addGadget(addGadgetModel.Gadget);
+            addGadget(addGadgetModel.Gadget);
+
             this.Close();
         }
     }
